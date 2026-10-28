@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Design System Tokens */
+  --neon-red: #FF3838;
+  --neon-green: #6DAA3F;
+  --accent-blue: #63B8F4;
+  --accent-orange: #FFA500;
+  --dark-muted: #262626;
+  --border-gray: #454545;
+  --card-bg: #222222;
+  --main-bg: #151515;
+  --secondary-bg: #1C1C1C;
+  --primary-text: #F5F5F5;
+  --secondary-text: #A7A7A7;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--main-bg);
+  color: var(--primary-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--main-bg);
+  color: var(--primary-text);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  selection-background-color: var(--neon-red);
+  selection-color: #FFFFFF;
+}
+
+::selection {
+  background: rgba(255, 56, 56, 0.9);
+  color: #FFFFFF;
+}
+
+/* Custom Film Grain Texture */
+.bg-film-grain {
+  position: relative;
+}
+
+.bg-film-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #151515;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+  border: 1px solid #333333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF3838;
+}
+
+/* Typography & Glow Helpers */
+.text-neon-glow-red {
+  text-shadow: 0 0 15px rgba(255, 56, 56, 0.5), 0 0 30px rgba(255, 56, 56, 0.2);
+}
+
+.text-neon-glow-green {
+  text-shadow: 0 0 15px rgba(109, 170, 63, 0.5), 0 0 30px rgba(109, 170, 63, 0.2);
+}
+
+.text-neon-glow-blue {
+  text-shadow: 0 0 15px rgba(99, 184, 244, 0.5), 0 0 30px rgba(99, 184, 244, 0.2);
+}
+
+/* Smooth Transitions for interactive elements */
+a, button {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
